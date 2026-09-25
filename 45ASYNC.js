@@ -2,7 +2,7 @@ console.log("Promesas");
 
 const condition = true; 
 
-// usaremos funciones que resuelven problemas
+
 function myFunction() {
     return new Promise((resolve, reject) => {
         serTimeout(() => {    
@@ -12,7 +12,7 @@ function myFunction() {
     })
 }
 
-// usaremos funciones que resuelven problemas
+
 function myFunction2() {
     return new Promise((resolve, reject) => {
         serTimeout(() => {    
@@ -21,12 +21,26 @@ function myFunction2() {
         }, 1000)   
     })
 }
-// Si la promesa va bien ejecutaremos el bloque then
-// En caso de que no se resuelva usaremos el bloque catch
-myFunction()
-.then((response) => {
+
+//myFunction()
+//.then((response) => {
+//    console.log(response);
+//    return myFunction2
+//})
+//.then((res) => console.log (res))
+//.catch((error) => console.log(error))
+
+//nuevas sintaxis xd
+// función que gestiona contenido asincrono
+async function handlePromise() {
+    try {
+    const response = await myFunction();   
     console.log(response);
-    return myFunction2
-})
-.then((res) => console.log (res))
-.catch((error) => console.log(error))
+    const response2 = await myFunction2();
+    console.log(response2);
+    } catch (error){
+        console.log(error);
+    }
+}
+
+handlePromise();
